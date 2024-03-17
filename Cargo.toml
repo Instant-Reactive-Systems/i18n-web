@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-fluent-templates = { version = "0.9", features = ["fluent"] }
+fluent-templates = { version = "0.9" }
