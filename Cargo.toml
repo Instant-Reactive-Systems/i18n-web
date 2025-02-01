@@ -4,4 +4,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+i18n = { git = "ssh://git@github.com/Instant-Reactive-Systems/i18n.git" }
 fluent-templates = { version = "0.12" }
