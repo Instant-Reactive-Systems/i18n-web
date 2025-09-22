@@ -2,14 +2,7 @@
 //!
 //! Common web stuff such as status codes and browser errors translated.
 
-use fluent_templates::Loader;
-
-fluent_templates::static_loader! {
-    pub static LOCALE = {
-        locales: "i18n",
-        fallback_language: "en-US",
-    };
-}
+i18n::load!("./i18n", fallback_lang = "en-US");
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Error {
@@ -17,9 +10,13 @@ pub enum Error {
 }
 
 impl i18n::LocalizedDisplay for Error {
-    fn localize(&self, lang: &i18n::LanguageIdentifier) -> String {
-        match self {
-            Self::NotFound => LOCALE.lookup(lang, "web-code-not_found"),
-        }
+    fn localize(&self, lang: &i18n::LanguageIdentifier) -> i18n::Message {
+        let id = match self {
+            Self::NotFound => "http-code-not_found",
+        };
+
+        LOCALES
+            .query(lang, &i18n::Query::new(id).with_fallback(true))
+            .unwrap()
     }
 }
