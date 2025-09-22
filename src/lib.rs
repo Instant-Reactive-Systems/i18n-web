@@ -2,7 +2,7 @@
 //!
 //! Common web stuff such as status codes and browser errors translated.
 
-i18n::load!("./i18n", fallback_lang = "en-US");
+i18n::load!("./i18n");
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Error {
